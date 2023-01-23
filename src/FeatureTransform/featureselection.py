@@ -83,7 +83,7 @@ class FeatureSelection(HyperParameterTuning):
         reg = DecisionTreeClassifier()
         rfe_model = RFE(reg, step=1)
         rankings = rfe_model.fit(x, y).ranking_
-        ranked = pd.DataFrame([x.columns, rankings]).T
+        ranked = DataFrame([x.columns, rankings]).T
         ranked.columns = ['Feature', 'Ranking']
         ranked = ranked.sort_values('Ranking')
         s = ranked[ranked.Ranking <= rank]['Feature']
